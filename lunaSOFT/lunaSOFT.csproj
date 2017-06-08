@@ -57,6 +57,12 @@
     <Compile Include="FrontEnd\Clientes\frmCatalogoCliente.Designer.cs">
       <DependentUpon>frmCatalogoCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrontEnd\frmRegistrarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\frmRegistrarPedido.Designer.cs">
+      <DependentUpon>frmRegistrarPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrontEnd\Login\frmAgregarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrontEnd\Clientes\frmCatalogoCliente.resx">
       <DependentUpon>frmCatalogoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\frmRegistrarPedido.resx">
+      <DependentUpon>frmRegistrarPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontEnd\Login\frmAgregarUsuario.resx">
       <DependentUpon>frmAgregarUsuario.cs</DependentUpon>
