@@ -84,7 +84,7 @@ namespace lunaSOFT.FrontEnd.Login
                     objDAO.insertarUsuario(objPojo);//METODO
 
                     MessageBox.Show("Usuario registrado con exito", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    new frmLogin().Show();
+                    
                     this.Close();
 
                 }
@@ -101,7 +101,7 @@ namespace lunaSOFT.FrontEnd.Login
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            new frmLogin().Show();
+            
             this.Close();
         }
 

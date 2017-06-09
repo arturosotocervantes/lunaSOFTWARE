@@ -15,7 +15,7 @@ namespace lunaSOFT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmRegistrarPedido());
+            Application.Run(new frmLogin());
         }
     }
 }

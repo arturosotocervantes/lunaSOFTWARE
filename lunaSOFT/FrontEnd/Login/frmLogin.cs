@@ -6,6 +6,7 @@ using MySql.Data.MySqlClient;
 using lunaSOFT.BackEnd;
 using System.Security.Cryptography;
 using System.Text;
+using lunaSOFT.FrontEnd;
 
 namespace lunaSOFT
 {
@@ -13,6 +14,7 @@ namespace lunaSOFT
     {
 
         clsConexion cn = new clsConexion();
+        frmMDIParent objMDIParent = new frmMDIParent();
         MySqlCommand cmd;
 
         public frmLogin()
@@ -175,14 +177,27 @@ namespace lunaSOFT
                     if (rol == "GERENTE ADMINISTRATIVO")
                     {
                         MessageBox.Show("Bienvenido GERENTE ADMINISTRATIVO");
+                        
+                        objMDIParent.asignacionDePermisos(true,false,false);
+                        objMDIParent.Show();
+                        this.Hide();
                     }
                     else if (rol == "GERENTE OPERATIVO")
                     {
                         MessageBox.Show("Bienvenido GERENTE OPERATIVO");
+
+                        objMDIParent.asignacionDePermisos(false, true, false);
+                        objMDIParent.Show();
+                        this.Hide();
+
                     }
                     else if (rol == "OPERATIVO")
                     {
                         MessageBox.Show("Bienvenido OPERATIVO");
+
+                        objMDIParent.asignacionDePermisos(false, false, true);
+                        objMDIParent.Show();
+                        this.Hide();
                     }
                 }
                 else
@@ -205,21 +220,18 @@ namespace lunaSOFT
             }
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+      
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-
-            new frmAgregarUsuario().Show();
-            this.Hide();
-        }
+        
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
