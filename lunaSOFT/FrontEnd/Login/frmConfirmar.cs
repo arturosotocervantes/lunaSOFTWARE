@@ -50,52 +50,59 @@ namespace lunaSOFT.FrontEnd.Login
                 MessageBox.Show("Error al establecer la conexion a la base de datos!", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            try
+            if (txtContraseña.Text != "Contraseña" && txtUsuario.Text != "Usuario")
             {
-                String user = txtUsuario.Text;
-                String password = txtContraseña.Text;
-                String usuario = "", contraseña = "", rol = "";
-
-                cmd.CommandText = "select usuario from login where usuario='" + user + "'";
-                if (cmd.ExecuteScalar() != null)
+                try
                 {
-                    usuario = (cmd.ExecuteScalar().ToString());
+                    String user = txtUsuario.Text;
+                    String password = txtContraseña.Text;
+                    String usuario = "", contraseña = "", rol = "";
+
+                    cmd.CommandText = "select usuario from login where usuario='" + user + "'";
+                    if (cmd.ExecuteScalar() != null)
+                    {
+                        usuario = (cmd.ExecuteScalar().ToString());
+                    }
+
+                    cmd.CommandText = "select contraseña from login where contraseña='" + encriptarPassword(password) + "'";
+                    if (cmd.ExecuteScalar() != null)
+                    {
+                        contraseña = (cmd.ExecuteScalar().ToString());
+
+                    }
+
+                    cmd.CommandText = "select rol from login where usuario='" + user + "'";
+                    if (cmd.ExecuteScalar() != null)
+                    {
+                        rol = (cmd.ExecuteScalar().ToString());
+                    }
+                    cn.cerrarConexion();
+
+                    if (user == usuario && encriptarPassword(password) == contraseña && rol == "GERENTE ADMINISTRATIVO")
+                    {
+                        objPojo.usuario = this.user;
+                        objPojo.contraseña = encriptarPassword(this.password);
+                        objPojo.rol = this.rol.ToUpper();
+                        objDAO.insertarUsuario(objPojo);//METODO
+
+                        MessageBox.Show("Usuario registrado con exito", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario no registrado como Administrador Generar...", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ingrese correctamente Usuario y Contraseña!", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                cmd.CommandText = "select contraseña from login where contraseña='" + encriptarPassword(password) + "'";
-                if (cmd.ExecuteScalar() != null)
-                {
-                    contraseña = (cmd.ExecuteScalar().ToString());
-                   
-                }
-
-                cmd.CommandText = "select rol from login where usuario='" + user + "'";
-                if (cmd.ExecuteScalar() != null)
-                {
-                    rol = (cmd.ExecuteScalar().ToString());
-                }
-                cn.cerrarConexion();
-
-                if (user == usuario && encriptarPassword(password) == contraseña && rol == "GERENTE ADMINISTRATIVO")
-                {
-                    objPojo.usuario = this.user;
-                    objPojo.contraseña = encriptarPassword(this.password);
-                    objPojo.rol = this.rol.ToUpper();
-                    objDAO.insertarUsuario(objPojo);//METODO
-
-                    MessageBox.Show("Usuario registrado con exito", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    this.Close();
-
-                }
-                else
-                {
-                    MessageBox.Show("Usuario no registrado como Administrador Generar...", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
+            }else
             {
-                MessageBox.Show("Ingrese correctamente Usuario y Contraseña!", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Rellena correctamente los campos Usuario y Contraseña!", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

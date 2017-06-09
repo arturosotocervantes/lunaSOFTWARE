@@ -57,17 +57,29 @@
     <Compile Include="FrontEnd\Clientes\frmCatalogoCliente.Designer.cs">
       <DependentUpon>frmCatalogoCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrontEnd\frmAsignacionCargas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\frmAsignacionCargas.Designer.cs">
+      <DependentUpon>frmAsignacionCargas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrontEnd\frmMDIParent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrontEnd\frmMDIParent.Designer.cs">
       <DependentUpon>frmMDIParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrontEnd\frmRegistrarPedido.cs">
+    <Compile Include="FrontEnd\frmModelos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrontEnd\frmRegistrarPedido.Designer.cs">
-      <DependentUpon>frmRegistrarPedido.cs</DependentUpon>
+    <Compile Include="FrontEnd\frmModelos.Designer.cs">
+      <DependentUpon>frmModelos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\frmPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\frmPedidos.Designer.cs">
+      <DependentUpon>frmPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="FrontEnd\Login\frmAgregarUsuario.cs">
       <SubType>Form</SubType>
@@ -94,11 +106,17 @@
     <EmbeddedResource Include="FrontEnd\Clientes\frmCatalogoCliente.resx">
       <DependentUpon>frmCatalogoCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\frmAsignacionCargas.resx">
+      <DependentUpon>frmAsignacionCargas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrontEnd\frmMDIParent.resx">
       <DependentUpon>frmMDIParent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrontEnd\frmRegistrarPedido.resx">
-      <DependentUpon>frmRegistrarPedido.cs</DependentUpon>
+    <EmbeddedResource Include="FrontEnd\frmModelos.resx">
+      <DependentUpon>frmModelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrontEnd\frmPedidos.resx">
+      <DependentUpon>frmPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontEnd\Login\frmAgregarUsuario.resx">
       <DependentUpon>frmAgregarUsuario.cs</DependentUpon>
@@ -173,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\transportadora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrarSesion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
