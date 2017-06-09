@@ -152,14 +152,14 @@ namespace lunaSOFT
                 String password = txtContraseña.Text;
                 String usuario = "", contraseña = "", rol = "";
 
-                cmd.CommandText = "select usuario from login where usuario='" + user + "'";
+                cmd.CommandText = "select usuario from login where usuario='" + user + "' and contraseña=sha1("+password+")";
                 if (cmd.ExecuteScalar() != null)
                 {
                     usuario = (cmd.ExecuteScalar().ToString());
                 }
 
-                cmd.CommandText = "select contraseña from login where contraseña='" + encriptarPassword(password) + "'";
-                if (cmd.ExecuteScalar() != null)
+                    cmd.CommandText = "select contraseña from login where usuario='" + user + "' and contraseña=sha1(" + password + ")";
+                    if (cmd.ExecuteScalar() != null)
                 {
                     contraseña = "" + (cmd.ExecuteScalar());
 

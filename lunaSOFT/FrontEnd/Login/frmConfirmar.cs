@@ -58,20 +58,20 @@ namespace lunaSOFT.FrontEnd.Login
                     String password = txtContraseña.Text;
                     String usuario = "", contraseña = "", rol = "";
 
-                    cmd.CommandText = "select usuario from login where usuario='" + user + "'";
+                    cmd.CommandText = "select usuario from login where usuario='" + user + "' and contraseña=sha1(" + password + ")";
                     if (cmd.ExecuteScalar() != null)
                     {
                         usuario = (cmd.ExecuteScalar().ToString());
                     }
 
-                    cmd.CommandText = "select contraseña from login where contraseña='" + encriptarPassword(password) + "'";
+                    cmd.CommandText = "select contraseña from login where usuario='" + user + "' and contraseña=sha1(" + password + ")";
                     if (cmd.ExecuteScalar() != null)
                     {
                         contraseña = (cmd.ExecuteScalar().ToString());
 
                     }
 
-                    cmd.CommandText = "select rol from login where usuario='" + user + "'";
+                    cmd.CommandText = "select rol from login where usuario='" + user + "' and contraseña=sha1(" + password + ")";
                     if (cmd.ExecuteScalar() != null)
                     {
                         rol = (cmd.ExecuteScalar().ToString());
